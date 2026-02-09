@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          HelloWorld
+          Me gusto el trailer de Mario Bros Galaxy Movie
         </p>
       </header>
     </div>
