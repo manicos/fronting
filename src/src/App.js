@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Mi primer proyecto en la nube sin gestionar infraestructura<br>Todos davor de tener hasta aqui</br>
+          Mi primer proyecto en la nube sin gestionar infraestructura<br></br>
         </p>
       </header>
     </div>
