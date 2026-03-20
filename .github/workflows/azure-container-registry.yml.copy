@@ -48,9 +48,9 @@ jobs:
         push: true
         tags: exploressaddle.azurecr.io/exploreapp:latest
 
-    - name: 'Deploy to Azure Container App'
-      uses: azure/container-apps-deploy-action@v1
+    - name: 'Deploy to Azure App Service'
+      uses: azure/webapps-deploy@v2
       with:
-        appName: app-test
-        resourceGroup: azure26
-        imageToDeploy: exploressaddle.azurecr.io/exploreapp:latest
+        app-name: 'appabolio'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        images: 'exploressaddle.azurecr.io/exploreapp:latest'
