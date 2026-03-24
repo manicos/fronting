@@ -46,14 +46,14 @@ jobs:
       with:
         context: .
         push: true
-        tags: exploressaddle.azurecr.io/exploreapp:latest
+        tags: exploressaddle.azurecr.io/exploreapp:${{ slice(github.sha, 0, 7) }}
 
     - name: 'Deploy to Azure Container App'
       uses: azure/container-apps-deploy-action@v1
       with:
         containerAppName: app-test
         resourceGroup: azure26
-        imageToDeploy: exploressaddle.azurecr.io/exploreapp:latest
+        imageToDeploy: exploressaddle.azurecr.io/exploreapp:${{ slice(github.sha, 0, 7) }}
         acrName: exploressaddle
         acrUsername: ${{ secrets.ACR_USERNAME }}
         acrPassword: ${{ secrets.ACR_PASSWORD }}
