@@ -29,6 +29,10 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
 
+    - name: Get short SHA
+      id: sha
+      run: echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
     - name: 'Login to Azure'
       uses: azure/login@v1
       with:
@@ -46,14 +50,15 @@ jobs:
       with:
         context: .
         push: true
-        tags: exploressaddle.azurecr.io/exploreapp:${{ slice(github.sha, 0, 7) }}
+        tags: exploressaddle.azurecr.io/exploreapp:latest
 
     - name: 'Deploy to Azure Container App'
       uses: azure/container-apps-deploy-action@v1
       with:
         containerAppName: app-test
         resourceGroup: azure26
-        imageToDeploy: exploressaddle.azurecr.io/exploreapp:${{ slice(github.sha, 0, 7) }}
+        imageToDeploy: exploressaddle.azurecr.io/exploreapp:latest
         acrName: exploressaddle
         acrUsername: ${{ secrets.ACR_USERNAME }}
         acrPassword: ${{ secrets.ACR_PASSWORD }}
+        environmentVariables: 'GIT_SHA=${{ steps.sha.outputs.sha }}'
