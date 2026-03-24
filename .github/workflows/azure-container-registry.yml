@@ -51,9 +51,9 @@ jobs:
     - name: 'Deploy to Azure Container App'
       uses: azure/container-apps-deploy-action@v1
       with:
-        appName: app-test
+        containerAppName: app-test
         resourceGroup: azure26
         imageToDeploy: exploressaddle.azurecr.io/exploreapp:latest
-        registryUrl: exploressaddle.azurecr.io
-        registryUsername: ${{ secrets.ACR_USERNAME }}
-        registryPassword: ${{ secrets.ACR_PASSWORD }}
+        acrName: exploressaddle
+        acrUsername: ${{ secrets.ACR_USERNAME }}
+        acrPassword: ${{ secrets.ACR_PASSWORD }}
