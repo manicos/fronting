@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Mi primer proyecto de software para SO.<br></br>
+          Mi primer proyecto de software de nuevas tecnologías.<br></br>
         </p>
       </header>
     </div>
